@@ -1,3 +1,4 @@
+'use client';
 import {
   Sidebar,
   SidebarContent,
@@ -13,12 +14,14 @@ import ViewSidebarIcon from '@mui/icons-material/ViewSidebar';
 import { Button } from "@mui/material";
 import { Book, Compass, LayoutDashboard, PencilRulerIcon, UserCircle2Icon, WalletCards } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { use } from "react";
 
 const SidebarOptions = [
   {
     title:'Dashboard',
     icon: LayoutDashboard,
-    path:'#'
+    path:'/workspace'
   },
   {
     title:'My Learning',
@@ -26,7 +29,7 @@ const SidebarOptions = [
     path:'/workspace/my-courses'
   },
   {
-    title:'Explore COurses',
+    title:'Explore Courses',
     icon: Compass,
     path:'/workspace/explore'
   },
@@ -47,6 +50,8 @@ const SidebarOptions = [
   },
 ]
 export function AppSidebar() {
+
+  const path=usePathname();
   return (
     <Sidebar>
       <SidebarHeader className={'p-4'}>
@@ -63,8 +68,8 @@ export function AppSidebar() {
             {SidebarOptions.map((item,index)=>(
               <SidebarMenuItem key={index}>
                   <SidebarMenuButton asChild>
-                <Link href={item.path}>
-                <item.icon />
+                <Link href={item.path} className={`text-[17px] ${path.includes(item.path) && 'text-primary bg-purple-300'}`}  >
+                <item.icon className="h-7 w-7" />
                 <span>{item.title}</span>
                 </Link>
                   </SidebarMenuButton>
