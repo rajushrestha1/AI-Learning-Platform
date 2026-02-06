@@ -16,6 +16,7 @@ import { Book, Compass, LayoutDashboard, PencilRulerIcon, UserCircle2Icon, Walle
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { use } from "react";
+import AddNewCourseDialog from "./AddNewCourseDialog";
 
 const SidebarOptions = [
   {
@@ -59,7 +60,9 @@ export function AppSidebar() {
         </SidebarHeader>
       <SidebarContent>
         <SidebarGroup >
+          <AddNewCourseDialog >
         <Button>Create New Course</Button>
+          </AddNewCourseDialog>
           </SidebarGroup>
           <SidebarGroup>
 
